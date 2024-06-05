@@ -1,17 +1,24 @@
-export default function CourseGoals({
-  title,
-  description,
-}: {
+import { type ReactNode } from "react";
+
+type CourseGoalsProps = {
+  id: number;
   title: string;
-  description: string;
-}) {
+  children: ReactNode;
+  onDelete: (id: number) => void;
+};
+export default function CourseGoals({
+  id,
+  title,
+  children,
+  onDelete,
+}: CourseGoalsProps) {
   return (
     <article>
       <div>
         <h2>{title}</h2>
-        <p>{description}</p>
+        {children}
       </div>
-      <button>Delete</button>
+      <button onClick={() => onDelete(id)}>Delete</button>
     </article>
   );
 }
